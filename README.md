@@ -34,7 +34,7 @@ $ npm i --save lodash
 ### Using lodash
 
 In node.js
-```
+```javascript
 // Load the full build.
 var _ = require('lodash');
 // Load the core build.
