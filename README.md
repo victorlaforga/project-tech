@@ -9,11 +9,9 @@ In your terminal:
 ```
 npm install -g nodemon
 ```
-Nodeom wil be globaly installed in the system path
+Nodemon wil be globaly installed in the system path
 
 ### Using nodemon
-
-If you have a package.json file for your app, you can omit the main script entirely and nodemon will read the package.json for the main property and use that value as the app.
 
 ```
 nodemon [your node app]
