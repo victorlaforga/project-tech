@@ -11,10 +11,9 @@
         "url": "git+https://github.com/victorlaforga/project-tech.git"
     },
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
-        "lodash": "^4.17.11",
-        "viewerjs": "^1.3.2"
+        "lodash": "^4.17.11"
     },
     "devDependencies": {
         "nodemon": "^1.18.10"
