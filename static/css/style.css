@@ -1,8 +1,21 @@
-h1 {
+h1, h2, h3, h4, p, li {
   font-family: 'Dosis', sans-serif;
+  color: white; 
+}
+
+h1 {
   color: white;
+  border-bottom: solid #72192A;
+  border-radius: 10px;
 }
 
 body {
-  background-color: rgb(194, 108, 159)
+  background-color: #FF889E;
+}
+
+article {
+  background-color: #BE2C47;
+  border-radius: 10px;
+  padding: 5px;
+  width: 25em;
 }
