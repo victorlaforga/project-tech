@@ -1,6 +1,12 @@
 h1, h2, h3, h4, p, li {
   font-family: 'Dosis', sans-serif;
+  color: white; 
+}
+
+h1 {
   color: white;
+  border-bottom: solid #72192A;
+  border-radius: 10px;
 }
 
 h1 {
