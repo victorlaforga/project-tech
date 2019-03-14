@@ -1,3 +1,7 @@
+# Diner4Two
+
+Diner4two is a datingsite which brings people who like to cook together.  
+
 # Installing packages & using them
 
 ## Nodemon
