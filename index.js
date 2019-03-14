@@ -1,10 +1,7 @@
 const express = require('express');
 const find = require('find');
-<<<<<<< HEAD
+
 const port = process.env.PORT || 4999;
-=======
-const port = 4999;
->>>>>>> 732f115d9810ab593c717930f3fa4bf91bb75cd8
 const app = express();
 const data = [{
 
@@ -22,19 +19,13 @@ const data = [{
   amount: 'For 1 person',
   duration: '15 minutes',
   description: 'Whisk eggs, salt and pepper in small bowl. Melt butter in non-stick skillet over medium heat. Pour in egg mixture and reduce heat to medium-low. As eggs begin to set, gently move spatula across bottom and side of skillet to form large, soft curds.'
-=======
-  description: 'First... then... and finally.'
->>>>>>> 732f115d9810ab593c717930f3fa4bf91bb75cd8
+
 
 }]
 
 app.use('/static', express.static('static'))
 app.set('view engine', 'pug')
   .get('/', index)
-<<<<<<< HEAD
-  .get('/add', addRecipeForm)
-=======
->>>>>>> 732f115d9810ab593c717930f3fa4bf91bb75cd8
   .get('/aboutMe', aboutMe)
   .get('/recipe', recipe)
   .get('/:id', recipeFind)
@@ -46,7 +37,7 @@ function index(req, res) {
 
 function aboutMe(req, res) {
   res.send('This is the about ME page!');
-<<<<<<< HEAD
+
 }
 
 function errorPage(req, res) {
@@ -65,7 +56,7 @@ function recipe(req, res) {
     recipes = data[index]
     doc += '<h3><a href="/' + recipes.id + '">' + recipes.title + '</a></h3>'
     doc += '<p>' + recipes.amount + '</p>'
-=======
+
 }
 
 function errorPage(req, res) {
@@ -84,12 +75,11 @@ function recipe(req, res) {
   while (++index < length) {
     recipes = data[index]
     doc += '<h3><a href="/' + recipes.id + '">' + recipes.title + '</a></h3>'
->>>>>>> 732f115d9810ab593c717930f3fa4bf91bb75cd8
     doc += '<p>' + recipes.description + '</p>'
 
   }
 
-<<<<<<< HEAD
+
   res.send(doc)
 }
 
@@ -105,22 +95,7 @@ function recipeFind(req, res) {
 
 
 }
-=======
-  function recipeFind(req, res) {
-    var id = req.params.id
-    var doc = '<!doctype html>'
-    var recipe = find(data, function(value) {
-      return value.id === id
-    })
 
-    doc += '<title>' + recipes.title + ' - My recipes website</title>'
-    doc += '<h1>' + recipes.title + '</h1>'
-    doc += '<p>' + recipes.description + '</p>'
-
-    res.send(doc)
-
-  }
->>>>>>> 732f115d9810ab593c717930f3fa4bf91bb75cd8
 
 
 app.listen(port);
