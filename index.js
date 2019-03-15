@@ -86,11 +86,10 @@ function recipe(req, res) {
 }
 
 function recipeFind(req, res) {
-  recipes = data[index];
-  var id = req.params.id;
   var movie = find(data, function(value) {
     return value.id === id;
   });
+  recipes = data[index];
   var doc = `
 <!doctype html>
 <title>${recipes.id}</title>
