@@ -13,10 +13,13 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
+        "array-find": "^1.0.0",
+        "body-parser": "^1.18.3",
         "express": "^4.16.4",
         "find": "^0.3.0",
         "lodash": "^4.17.11",
-        "pug": "^2.0.3"
+        "pug": "^2.0.3",
+        "slug": "^1.0.0"
     },
     "devDependencies": {
         "eslint": "^5.15.1",
