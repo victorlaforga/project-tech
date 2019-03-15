@@ -60,15 +60,12 @@ function addRecipe(req, res) {
   data.push({
     id: id,
     title: req.body.title,
+    amount: req.body.amount,
     duration: req.body.duration,
     description: req.body.description
   });
 
   res.redirect("/" + id);
-}
-
-function errorPage(req, res) {
-  res.status(404).render("notfound.pug");
 }
 
 function recipe(req, res) {
@@ -77,26 +74,30 @@ function recipe(req, res) {
   var index = -1;
 
   while (++index < length) {
-    recipes = data[index];
-    doc += '<h3><a href="/' + recipes.id + '">' + recipes.title + "</a></h3>";
-    doc += "<p>" + recipes.description + "</p>";
+    recipe = data[index];
+    doc += '<h3><a href="/' + recipe.id + '">' + recipe.title + "</a></h3>";
+    doc += "<p>" + recipe.amount + "</p>";
+    doc += "<p>" + recipe.description + "</p>";
   }
 
   res.send(doc);
 }
 
 function recipeFind(req, res) {
-  var movie = find(data, function(value) {
-    return value.id === id;
-  });
-  recipes = data[index];
-  var doc = `
-<!doctype html>
-<title>${recipes.id}</title>
-<h1>${recipes.title}</h1>
-<p>${recipes.description}</p>`;
+  var id = req.params.id
+  var doc = '<!doctype html>'
+  var recipe = find(data, function (value) {
+    return value.id === id
+  })
 
-  res.send(doc);
+  doc += '<title>' + recipe.title + ' - My movie website</title>'
+  doc += '<h1>' + recipe.title + '</h1>'
+  doc += '<p>' + recipe.amount + '</p>'
+  doc += '<p>' + recipe.duration + '</p>'
+  doc += '<p>' + recipe.description + '</p>'
+
+  res.send(doc)
+
 }
 
 app.listen(port);
