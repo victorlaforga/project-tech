@@ -36,6 +36,7 @@ app
   .post("/", addRecipe)
   .get("/recipe", recipe)
   .get("/:id", recipeFind)
+  .delete("/:id", remove)
   .use(errorPage);
 
 function index(req, res) {
@@ -84,20 +85,31 @@ function recipe(req, res) {
 }
 
 function recipeFind(req, res) {
-  var id = req.params.id
-  var doc = '<!doctype html>'
-  var recipe = find(data, function (value) {
-    return value.id === id
-  })
+  var id = req.params.id;
+  var recipe = find(data, function(value) {
+    return value.id === id;
+  });
 
-  doc += '<title>' + recipe.title + ' - My movie website</title>'
-  doc += '<h1>' + recipe.title + '</h1>'
-  doc += '<p>' + recipe.amount + '</p>'
-  doc += '<p>' + recipe.duration + '</p>'
-  doc += '<p>' + recipe.description + '</p>'
+  var doc = `
+  <!doctype html>
+  <title>${recipe.title}</title>
+  <h1>${recipe.title}</h1>
+  <p>${recipe.amount}</p>
+  <p>${recipe.duration}</p>
+  <p>${recipe.description}</p>`;
 
-  res.send(doc)
+  res.send(doc);
+}
 
+// Function to romve a recipe (It doesnt work yet...working on it.)
+function remove(req, res) {
+  var id = req.params.id;
+
+  data = data.filter(function(value) {
+    return value.id !== id;
+  });
+
+  res.json({ status: "ok" });
 }
 
 app.listen(port);
