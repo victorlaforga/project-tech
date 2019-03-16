@@ -1,6 +1,7 @@
 const express = require("express");
 const find = require("array-find");
 const slug = require("slug");
+const slugify = require('slugify');
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 4999;
 const app = express();
@@ -29,7 +30,7 @@ app.use("/static", express.static("static")).use(
   })
 );
 app
-  .set("view engine", "pug")
+  .set("view engine", "ejs")
   .get("/", index)
   .get("/aboutMe", aboutMe)
   .get("/add", addRecipeForm)
@@ -40,7 +41,7 @@ app
   .use(errorPage);
 
 function index(req, res) {
-  res.render("index.pug");
+  res.render("index.ejs");
 }
 
 function aboutMe(req, res) {
@@ -48,15 +49,15 @@ function aboutMe(req, res) {
 }
 
 function errorPage(req, res) {
-  res.status(404).render("notfound.pug");
+  res.status(404).render("notfound.ejs");
 }
 
 function addRecipeForm(req, res) {
-  res.render("add_recipe.pug");
+  res.render("add_recipe.ejs");
 }
 
 function addRecipe(req, res) {
-  var id = slug(req.body.title).toLowerCase();
+  var id = slugify(req.body.title).toLowerCase();
 
   data.push({
     id: id,
@@ -73,7 +74,6 @@ function recipe(req, res) {
   var doc = "<!doctype html>";
   var length = data.length;
   var index = -1;
-
   while (++index < length) {
     recipe = data[index];
     doc += '<h3><a href="/' + recipe.id + '">' + recipe.title + "</a></h3>";
@@ -82,6 +82,7 @@ function recipe(req, res) {
   }
 
   res.send(doc);
+
 }
 
 function recipeFind(req, res) {
@@ -99,9 +100,10 @@ function recipeFind(req, res) {
   <p>${recipe.description}</p>`;
 
   res.send(doc);
+
 }
 
-// Function to romve a recipe (It doesnt work yet...working on it.)
+// Function to remove a recipe (It doesnt work yet...working on it.)
 function remove(req, res) {
   var id = req.params.id;
 

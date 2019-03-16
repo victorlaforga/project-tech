@@ -1,0 +1,17 @@
+<% include partials/head.ejs %>
+<h1>Add your recipe</h1>
+
+  <form action="/" method="post">
+    <fieldset>
+<label for="namerecipe">Name recipe: </label>
+<input type="text" name="title" placeholder="Pasta with chicken">
+<label for="serves">Serves: </label>
+<input type="text" name="amount" placeholder="4 people">
+<label for="duration">Duration: </label>
+<input type="text" name="duration" placeholder="1h 55 minutes">
+<label for="description">Description: </label>
+<textarea rows="6" name="description" >First... then...</textarea>
+<input type="submit" value="Add recipe">
+    </fieldset>
+  </form>
+<a href="/recipe">My list of recipes</a>
