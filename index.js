@@ -1,6 +1,5 @@
 const express = require("express");
 const find = require("array-find");
-const slug = require("slug");
 const slugify = require('slugify');
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 4999;
@@ -71,44 +70,24 @@ function addRecipe(req, res) {
 }
 
 function recipe(req, res) {
-  var doc = "<!doctype html>";
-  var length = data.length;
-  var index = -1;
-  while (++index < length) {
-    recipe = data[index];
-    doc += '<h3><a href="/' + recipe.id + '">' + recipe.title + "</a></h3>";
-    doc += "<p>" + recipe.amount + "</p>";
-    doc += "<p>" + recipe.description + "</p>";
-  }
-
-  res.send(doc);
-
+  res.render("detail.ejs", {data});
 }
 
 function recipeFind(req, res) {
   var id = req.params.id;
-  var recipe = find(data, function(value) {
-    return value.id === id;
+  var filter = find(data, function(value) {
+    return value.id == id;
   });
 
-  var doc = `
-  <!doctype html>
-  <title>${recipe.title}</title>
-  <h1>${recipe.title}</h1>
-  <p>${recipe.amount}</p>
-  <p>${recipe.duration}</p>
-  <p>${recipe.description}</p>`;
-
-  res.send(doc);
-
+  res.render("detailpage_recipt.ejs", {data: filter});
 }
 
-// Function to remove a recipe (It doesnt work yet...working on it.)
-function remove(req, res) {
-  var id = req.params.id;
+ // Function to remove a recipe (It doesnt work yet...working on it.)
+ function remove(req, res) {
+   var id = req.params.id;
 
-  data = data.filter(function(value) {
-    return value.id !== id;
+   data = data.filter(function(value) {
+     return value.id !== id;
   });
 
   res.json({ status: "ok" });

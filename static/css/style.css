@@ -1,23 +1,46 @@
-h1, h2, h3, h4, p, li {
-  font-family: 'Dosis', sans-serif;
-  color: white;
-}
-
-h1 {
-  color: white;
-  border-bottom: solid #72192A;
-  border-radius: 10px;
-}
-
-h1 {
-  color: white;
-  border-bottom: solid #72192A;
-  border-radius: 10px;
+h1, h2, h3, h4, p, li, label, a {
+  font-family: 'menco', sans-serif;
 }
 
 body {
   background-color: #FF889E;
 }
+
+h1 {
+  color: white;
+}
+
+#homeMessage {text-align: center;}
+iframe.giphy-embed {
+  margin-left: 25em;
+}
+
+/* header & head */
+header>a.links_head {
+  display: flex;
+  justify-content: center;
+  margin: 4px 10px;
+  background-color: #C02C47;
+  color: white;
+  width: 10em;
+  border-radius: 10px;
+  padding: 3px;
+}
+a{ text-decoration: none;}
+
+.btn {background-color: inherit;
+border-radius: 10px;
+padding: 6px 8px;
+color: white;
+font-size: 20px;
+display: flex;
+float: left;}
+
+.btn:hover { color: #C02C47;
+background-color: white;}
+
+header>a.links_head:hover {background-color: white;
+color: #C02C47;}
 
 article {
   background-color: #BE2C47;
@@ -26,5 +49,72 @@ article {
   width: 25em;
 }
 
-input {display: block;}
-label {float: left;}
+header {
+  display: flex;
+  justify-content: center;
+}
+
+/* add recipe page */
+form>fieldset>h2:hover {
+  background-color: white;
+  color: #BE2C47
+}
+
+input, label {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 1px auto;
+}
+.duration_inputs {display: flex;
+  justify-content: center;
+
+}
+div.duration_inputs > p{font-size: 12px;
+margin-left: -13px}
+input{border-radius: 3px}
+
+fieldset {
+  width: 13em;
+  border-radius: 10px;
+  border: 2px solid #72192A;
+  background-color: #C02C47;
+  color: white
+}
+
+form>fieldset>h2 {
+  color: white;
+  text-align: center;
+  background-color: #BE2C47;
+  padding: 4px 8px 4px 8px;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+
+form, h1 {
+  display: flex;
+  justify-content: center;
+
+}
+
+/* detail.ejs */
+
+div.list_recipes {display: flex;
+flex-direction: row;}
+
+section {border: 2px solid #72192A;
+border-radius: 10px;
+padding: 1px 15px 15px 15px;
+margin: 1em 2em 1em 2em;
+max-width: 32em;
+min-width: 16em;
+justify-content: center;}
+
+section > button {
+  color: white;
+  background-color: #f2385a ;
+  display: flex;
+  padding: 5px;
+  border-radius: 5px;
+}

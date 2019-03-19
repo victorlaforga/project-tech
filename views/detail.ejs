@@ -1,2 +1,23 @@
 <% include partials/head.ejs %>
-<button type="button" name="button">Remove recipe</button>
+
+
+<% for (let i = 0; i < data.length; i++) { %>
+  <div class="list_recipes">
+  <section>
+<h1>
+  <%= data[i].title %>
+</h1>
+<p>
+  <%= data[i].duration %>
+</p>
+<p>
+  <%= data[i].amount %>
+</p>
+<p>
+  <%= data[i].description %>
+</p>
+<button id="js-remove" data-id="<%= data[i].id%>" type="button" name="button">Remove recipe</button>
+</section>
+</div>
+<% } %>
+<% include partials/tail.ejs %>

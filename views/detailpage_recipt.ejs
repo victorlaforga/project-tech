@@ -1,0 +1,20 @@
+<% include partials/head.ejs %>
+
+<section>
+
+<h1>
+  <%= data.title %>
+</h1>
+<p>
+  <%= data.duration %> (hours, minutes)
+</p>
+<p>
+  <%= data.amount %>
+</p>
+<p>
+  <%= data.description %>
+</p>
+<button id="js-remove" data-id="<%= data.id%>" type="button" name="button">Remove recipe</button>
+</section>
+
+<% include partials/tail.ejs %>
