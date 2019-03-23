@@ -1,6 +1,8 @@
 const express = require("express");
 const find = require("array-find");
-const slugify = require('slugify');
+const slugify = require("slugify");
+const mongo = require("mongodb");
+const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 4999;
 const app = express();
@@ -28,6 +30,19 @@ app.use("/static", express.static("static")).use(
     extended: true
   })
 );
+
+// mongo db
+require('dotenv').config();
+
+var url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT;
+mongo.MongoClient.connect(url, { useNewUrlParser: true }, function (err, client) {
+  if (err) {
+        throw err;
+    } else {
+        db = client.db(process.env.DB_NAME);
+    }
+})
+
 app
   .set("view engine", "ejs")
   .get("/", index)
@@ -38,6 +53,7 @@ app
   .get("/:id", recipeFind)
   .delete("/:id", remove)
   .use(errorPage);
+
 
 function index(req, res) {
   res.render("index.ejs");
@@ -58,26 +74,56 @@ function addRecipeForm(req, res) {
 function addRecipe(req, res) {
   var id = slugify(req.body.title).toLowerCase();
 
-  data.push({
-    id: id,
+  db.collection('recipe').insertOne({
     title: req.body.title,
     amount: req.body.amount,
     duration: req.body.duration,
     description: req.body.description
-  });
+  }, done)
 
-  res.redirect("/" + id);
+  function done(err, data) {
+    if (err) {
+      next(err)
+    } else {
+      res.redirect('/' + data.insertedId)
+    }
+  }
+
 }
 
-function recipe(req, res) {
-  res.render("detail.ejs", {data});
+function recipe(req, res, next) {
+  //mongo db
+  db.collection('recipe').find().toArray(done)
+
+  function done(err, data) {
+    if (err) {
+      next(err)
+    } else {
+      res.render("detail.ejs", {data})
+    }
+  }
+
 }
 
-function recipeFind(req, res) {
+function recipeFind(req, res, next) {
   var id = req.params.id;
   var filter = find(data, function(value) {
     return value.id == id;
   });
+
+//mongo db
+  db.collection('recipe').findOne({
+    _id: mongo.ObjectID(id)
+  }, done)
+
+  function done(err, data) {
+    if (err) {
+      next(err)
+    } else {
+      res.render('detailpage_recipt.ejs', {data: filter})
+    }
+  }
+
 
   res.render("detailpage_recipt.ejs", {data: filter});
 }
@@ -90,7 +136,9 @@ function recipeFind(req, res) {
      return value.id !== id;
   });
 
-  res.json({ status: "ok" });
+  res.json({ status: "ok" })
 }
+
+
 
 app.listen(port);
