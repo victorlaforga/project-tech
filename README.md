@@ -11,7 +11,8 @@ Dating4Two is a datingsite for people who love to cook!🍴You can remove and ad
 
 ## Which packages have I used?
 If you want to see which packages I have used, you can look in my package.json file under dependencies and dev dependencies.
-![packages](https://user-images.githubusercontent.com/37700441/55120492-a1e7a300-50f6-11e9-814c-6eb7e6b9570e.png | width=50)
+
+<img src="https://user-images.githubusercontent.com/37700441/55120492-a1e7a300-50f6-11e9-814c-6eb7e6b9570e.png" width="40%">
 
 ## My Wiki 📖 
 If you want to see more info about how I worked on my project and which steps I made, go to [My Wiki](https://github.com/victorlaforga/project-tech/wiki)
