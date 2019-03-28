@@ -35,8 +35,7 @@ app
     session({
       resave: false,
       saveUninitialized: true,
-      secret: process.env.SESSION_SECRET,
-      cookie: {}
+      secret: process.env.SESSION_SECRET
     })
   )
   .set("view engine", "ejs")
