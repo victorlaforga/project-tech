@@ -17,8 +17,8 @@ If you want to see which packages I have used, you can look in my package.json f
 ## Database & Collection
 My database is named _"recipes"_. In my database I have made a collection that is also named recipes. In my collection there are 8 documents. Each document is divided in 8 sections: *ID, title, amount, serves & description.*
 
-<img src="https://user-images.githubusercontent.com/37700441/55163202-a1d4bb00-5169-11e9-941a-869f6342f20d.png" width="40%">
-<img src="https://user-images.githubusercontent.com/37700441/55163201-a1d4bb00-5169-11e9-8c22-8844276e5c07.png" width="40%">
+<img src="https://user-images.githubusercontent.com/37700441/55163202-a1d4bb00-5169-11e9-941a-869f6342f20d.png" width="70%">
+<img src="https://user-images.githubusercontent.com/37700441/55163201-a1d4bb00-5169-11e9-8c22-8844276e5c07.png" width="70%">
 
 ## My Wiki 📖
 If you want to see more info about how I worked on my project and which steps I made, go to [My Wiki](https://github.com/victorlaforga/project-tech/wiki)
