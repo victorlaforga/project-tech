@@ -135,7 +135,6 @@ function recipeFind(req, res, next) {
   }
 }
 
-
 function remove(req, res) {
   var id = req.params.id;
 
