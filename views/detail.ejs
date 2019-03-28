@@ -1,6 +1,6 @@
 <% include partials/head.ejs %>
 
-<button class="lastAdded" type="button" name="button">My last added recipe: <%= myrecipe.title%> </button>
+<a class="lastAdded" href="/<%= myrecipe.id %>">My last added recipe: <strong><%= myrecipe.title%></strong> </a>
 
 
 <div class="list_recipes">
