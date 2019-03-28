@@ -1,4 +1,4 @@
-h1, h2, h3, h4, p, li, label, a {
+h1, h2, h3, h4, p, li, label, a, button {
   font-family: 'menco', sans-serif;
 }
 
@@ -54,6 +54,12 @@ header {
   justify-content: center;
 }
 
+.lastAdded {
+  color: #600b1a;
+  background-color: rgb(242, 201, 108);
+  border-radius: 5px;
+  padding: 1em;
+}
 /* add recipe page */
 form>fieldset>h2:hover {
   background-color: white;
@@ -101,7 +107,9 @@ form, h1 {
 /* detail.ejs */
 
 div.list_recipes {display: flex;
-flex-direction: row;}
+flex-wrap: wrap;
+justify-content: center;
+}
 
 section {border: 2px solid #72192A;
 border-radius: 10px;
@@ -117,4 +125,7 @@ section > button {
   display: flex;
   padding: 5px;
   border-radius: 5px;
+}
+
+section > h1 > a { color: white
 }

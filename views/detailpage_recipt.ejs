@@ -1,12 +1,16 @@
 <% include partials/head.ejs %>
-
+<button class="lastAdded" type="button" name="button">My last added recipe: <%= myrecipe.title%> </button>
 <section>
 
 <h1>
-  <%= data.title %>
+  <a href="/<%= data._id %>">
+    <%= data.title %></a>
 </h1>
 <p>
   <%= data.duration %> (hours, minutes)
+</p>
+<p>
+  <%= data.id %>
 </p>
 <p>
   <%= data.amount %>
@@ -14,7 +18,7 @@
 <p>
   <%= data.description %>
 </p>
-<button id="js-remove" data-id="<%= data.id%>" type="button" name="button">Remove recipe</button>
+<button id="verwijderKnop" data-id="<%= data._id%>" type="button" name="button">Remove recipe</button>
 </section>
 
 <% include partials/tail.ejs %>

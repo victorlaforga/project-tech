@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const find = require("array-find");
 const slugify = require("slugify");
@@ -5,25 +6,10 @@ const mongo = require("mongodb");
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 4999;
+const session = require('express-session')
 const app = express();
-const data = [
-  {
-    id: "chicken-pasta",
-    title: "Pasta with chicken",
-    amount: "For 4 people",
-    duration: "55 minutes",
-    description:
-      "In a large skillet over medium heat, warm oil and add chicken; cook until slightly brown. Add onion and garlic to cook for about 5 minutes or until garlic is golden and onions are translucent. Add tomatoes, broccoli, salt, pepper and oregano; stir well and bring to a boil. Cover and turn down heat to simmer for about 10 minutes."
-  },
-  {
-    id: "scrambled-egg",
-    title: "Scrambled Egg",
-    amount: "For 1 person",
-    duration: "15 minutes",
-    description:
-      "Whisk eggs, salt and pepper in small bowl. Melt butter in non-stick skillet over medium heat. Pour in egg mixture and reduce heat to medium-low. As eggs begin to set, gently move spatula across bottom and side of skillet to form large, soft curds."
-  }
-];
+
+
 
 app.use("/static", express.static("static")).use(
   bodyParser.urlencoded({
@@ -31,19 +17,27 @@ app.use("/static", express.static("static")).use(
   })
 );
 
-// mongo db
-require('dotenv').config();
-
-var url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT;
-mongo.MongoClient.connect(url, { useNewUrlParser: true }, function (err, client) {
+var url = 'mongodb://localhost:27017/recipes';
+mongo.MongoClient.connect(url, {
+  useNewUrlParser: true
+}, function(err, client) {
   if (err) {
-        throw err;
-    } else {
-        db = client.db(process.env.DB_NAME);
-    }
+    throw err;
+  } else {
+    db = client.db(process.env.DB_NAME);
+  }
 })
 
+
+
+
 app
+.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: process.env.SESSION_SECRET,
+    cookie: {}
+  }))
   .set("view engine", "ejs")
   .get("/", index)
   .get("/aboutMe", aboutMe)
@@ -52,11 +46,17 @@ app
   .get("/recipe", recipe)
   .get("/:id", recipeFind)
   .delete("/:id", remove)
-  .use(errorPage);
+  .use(errorPage)
 
 
-function index(req, res) {
-  res.render("index.ejs");
+
+
+function index(req, res, data) {
+  res.render("index.ejs", {
+    data,
+    myrecipe: req.session.myrecipe
+
+  });
 }
 
 function aboutMe(req, res) {
@@ -71,10 +71,10 @@ function addRecipeForm(req, res) {
   res.render("add_recipe.ejs");
 }
 
-function addRecipe(req, res) {
+function addRecipe(req, res, next) {
   var id = slugify(req.body.title).toLowerCase();
 
-  db.collection('recipe').insertOne({
+  db.collection('recipes').insertOne({
     title: req.body.title,
     amount: req.body.amount,
     duration: req.body.duration,
@@ -85,6 +85,12 @@ function addRecipe(req, res) {
     if (err) {
       next(err)
     } else {
+      req.session.myrecipe = {
+        id: data.insertedId,
+        title: req.body.title,
+        amount: req.body.amount,
+      };
+
       res.redirect('/' + data.insertedId)
     }
   }
@@ -92,14 +98,17 @@ function addRecipe(req, res) {
 }
 
 function recipe(req, res, next) {
-  //mongo db
-  db.collection('recipe').find().toArray(done)
+  db.collection('recipes').find().toArray(done)
 
   function done(err, data) {
     if (err) {
       next(err)
     } else {
-      res.render("detail.ejs", {data})
+      res.render("detail.ejs", {
+        data,
+        myrecipe: req.session.myrecipe
+
+      })
     }
   }
 
@@ -107,12 +116,9 @@ function recipe(req, res, next) {
 
 function recipeFind(req, res, next) {
   var id = req.params.id;
-  var filter = find(data, function(value) {
-    return value.id == id;
-  });
 
-//mongo db
-  db.collection('recipe').findOne({
+  //mongo db
+  db.collection('recipes').findOne({
     _id: mongo.ObjectID(id)
   }, done)
 
@@ -120,25 +126,32 @@ function recipeFind(req, res, next) {
     if (err) {
       next(err)
     } else {
-      res.render('detailpage_recipt.ejs', {data: filter})
+      res.render('detailpage_recipt.ejs', {
+        data,
+        myrecipe: req.session.myrecipe
+
+      })
     }
   }
-
-
-  res.render("detailpage_recipt.ejs", {data: filter});
 }
 
- // Function to remove a recipe (It doesnt work yet...working on it.)
- function remove(req, res) {
-   var id = req.params.id;
+// Function to remove a recipe (It doesnt work yet...working on it.)
+function remove(req, res) {
 
-   data = data.filter(function(value) {
-     return value.id !== id;
-  });
+  var id = req.params.id
 
-  res.json({ status: "ok" })
+  db.collection('recipes').deleteOne({
+    _id: mongo.ObjectID(id)
+  }, done)
+
+  function done(err) {
+    if (err) {
+      next(err)
+    } else {
+      res.json({
+        status: 'ok'
+      })
+    }
+  }
 }
-
-
-
 app.listen(port);

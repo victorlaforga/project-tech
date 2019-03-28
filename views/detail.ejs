@@ -1,17 +1,18 @@
 <% include partials/head.ejs %>
 
+<button class="lastAdded" type="button" name="button">My last added recipe: <%= myrecipe.title%> </button>
 
+
+<div class="list_recipes">
 <% for (let i = 0; i < data.length; i++) { %>
-  <div class="list_recipes">
+
   <section>
 <h1>
-  <%= data[i].title %>
+  <a href="/<%= data[i]._id %>"
+    ><%= data[i].title %></a>
 </h1>
 <p>
-  <%= data[i]._id %>
-</p>
-<p>
-  <%= data[i].duration %>
+  <%= data[i].duration %> (hours, minutes)
 </p>
 <p>
   <%= data[i].amount %>
@@ -19,8 +20,9 @@
 <p>
   <%= data[i].description %>
 </p>
-<button id="js-remove" data-id="<%= data[i].id%>" type="button" name="button">Remove recipe</button>
+<button id="verwijderKnop" data-id="<%= data[i]._id%>" type="button" name="button">Remove recipe</button>
 </section>
-</div>
+
 <% } %>
+</div>
 <% include partials/tail.ejs %>
