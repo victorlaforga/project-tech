@@ -15,8 +15,7 @@ app.use("/static", express.static("static")).use(
   })
 );
 
- //var url = "mongodb://localhost:27017/recipes";
- var url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT;
+var url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
 mongo.MongoClient.connect(
   url,
   {
