@@ -15,7 +15,7 @@ app.use("/static", express.static("static")).use(
   })
 );
 
-var url = "mongodb://localhost:27017/recipes";
+ var url = "mongodb://localhost:27017/recipes";
 mongo.MongoClient.connect(
   url,
   {

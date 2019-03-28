@@ -10,7 +10,10 @@ h1 {
   color: white;
 }
 
-#homeMessage {text-align: center;}
+#homeMessage {
+  text-align: center;
+}
+
 iframe.giphy-embed {
   margin-left: 25em;
 }
@@ -26,21 +29,30 @@ header>a.links_head {
   border-radius: 10px;
   padding: 3px;
 }
-a{ text-decoration: none;}
 
-.btn {background-color: inherit;
-border-radius: 10px;
-padding: 6px 8px;
-color: white;
-font-size: 20px;
-display: flex;
-float: left;}
+a {
+  text-decoration: none;
+}
 
-.btn:hover { color: #C02C47;
-background-color: white;}
+.btn {
+  background-color: inherit;
+  border-radius: 10px;
+  padding: 6px 8px;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  float: left;
+}
 
-header>a.links_head:hover {background-color: white;
-color: #C02C47;}
+.btn:hover {
+  color: #C02C47;
+  background-color: white;
+}
+
+header>a.links_head:hover {
+  background-color: white;
+  color: #C02C47;
+}
 
 article {
   background-color: #BE2C47;
@@ -58,8 +70,21 @@ header {
   color: #600b1a;
   background-color: rgb(242, 201, 108);
   border-radius: 5px;
-  padding: 1em;
+  padding: 10px;
+  float: right;
+  width: 10em;
+  text-align: center;
+  font-size: .9em;
+  position: absolute;
+  margin-top: -2.4em;
+  margin-bottom: 2em;
 }
+ section#sectionDetail {margin-top: 2em;
+   display: block;
+ justify-content: center;
+ margin-left: 7.5em;
+max-width: 60em;}
+
 /* add recipe page */
 form>fieldset>h2:hover {
   background-color: white;
@@ -72,13 +97,20 @@ input, label {
   text-align: center;
   margin: 1px auto;
 }
-.duration_inputs {display: flex;
-  justify-content: center;
 
+.duration_inputs {
+  display: flex;
+  justify-content: center;
 }
-div.duration_inputs > p{font-size: 12px;
-margin-left: -13px}
-input{border-radius: 3px}
+
+div.duration_inputs>p {
+  font-size: 12px;
+  margin-left: -13px
+}
+
+input {
+  border-radius: 3px
+}
 
 fieldset {
   width: 13em;
@@ -97,35 +129,37 @@ form>fieldset>h2 {
   font-size: 1em;
 }
 
-
 form, h1 {
   display: flex;
   justify-content: center;
-
 }
 
 /* detail.ejs */
-
-div.list_recipes {display: flex;
-flex-wrap: wrap;
-justify-content: center;
+div.list_recipes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1em;
 }
 
-section {border: 2px solid #72192A;
-border-radius: 10px;
-padding: 1px 15px 15px 15px;
-margin: 1em 2em 1em 2em;
-max-width: 32em;
-min-width: 16em;
-justify-content: center;}
+section {
+  border: 2px solid #72192A;
+  border-radius: 10px;
+  padding: 1px 15px 15px 15px;
+  margin: 1em 2em 1em 2em;
+  max-width: 30em;
+  min-width: 16em;
+  justify-content: center;
+}
 
-section > button {
+section>button {
   color: white;
-  background-color: #f2385a ;
+  background-color: #f2385a;
   display: flex;
   padding: 5px;
   border-radius: 5px;
 }
 
-section > h1 > a { color: white
+section>h1>a {
+  color: white
 }
