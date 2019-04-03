@@ -4,7 +4,8 @@
     "description": "project tech",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
     },
     "repository": {
         "type": "git",
@@ -20,6 +21,7 @@
         "express": "^4.16.4",
         "express-session": "^1.15.6",
         "find": "^0.3.0",
+        "heroku": "^7.22.7",
         "lodash": "^4.17.11",
         "mongodb": "^3.1.13",
         "mongoose": "^5.4.19",
