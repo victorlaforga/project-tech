@@ -1,6 +1,6 @@
 <% include partials/head.ejs %>
 <a class="lastAdded" href="/<%= myrecipe.id %>">My last added recipe: <strong><%= myrecipe.title%></strong> </a>
-<section id="sectionDetail">
+<div id="detailpagina">
 
 <h1>
   <a href="/<%= data._id %>">
@@ -19,6 +19,6 @@
   <%= data.description %>
 </p>
 <button id="verwijderKnop" data-id="<%= data._id%>" type="button" name="button">Remove recipe</button>
-</section>
+</div>
 
 <% include partials/tail.ejs %>

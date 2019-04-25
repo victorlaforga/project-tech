@@ -21,3 +21,21 @@ function removeRecipe(ev) {
     window.location = "/recipe";
   }
 }
+
+const pijltjeRechts = document.querySelectorAll(".nextRecipeRight");
+const pijltjeLinks = document.querySelectorAll(".nextRecipeLeft");
+const list = document.querySelector(".list_recipes");
+
+pijltjeRechts.forEach(pijl => pijl.addEventListener("click", moveSliderRechts));
+pijltjeLinks.forEach(pijl => pijl.addEventListener("click", moveSliderLinks));
+
+let translate = 0
+function moveSliderRechts() {
+  translate = translate - 400
+  list.style.transform = `translate(${translate}px)`
+}
+
+function moveSliderLinks() {
+  translate = translate + 400
+  list.style.transform = `translate(${translate}px)`
+}

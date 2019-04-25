@@ -79,7 +79,7 @@ header {
   margin-top: -2.4em;
   margin-bottom: 2em;
 }
- section#sectionDetail {margin-top: 2em;
+ div.slide#divDetail {margin-top: 2em;
    display: block;
  justify-content: center;
  margin-left: 7.5em;
@@ -91,6 +91,18 @@ form>fieldset>h2:hover {
   color: #BE2C47
 }
 
+#detailpagina {
+  max-width: 50em;
+  justify-content: center;
+  border: 1px solid white;
+  padding: 0.5em;
+  margin-top: 2em;
+  position: absolute;
+  margin: auto;
+  top: 5em;
+  right: 0;
+  left: 0;
+}
 input, label {
   display: flex;
   justify-content: center;
@@ -136,13 +148,14 @@ form, h1 {
 
 /* detail.ejs */
 div.list_recipes {
+  /*
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
   justify-content: center;
   margin-top: 1em;
 }
 
-section {
+div.slide {
   border: 2px solid #72192A;
   border-radius: 10px;
   padding: 1px 15px 15px 15px;
@@ -152,14 +165,62 @@ section {
   justify-content: center;
 }
 
-section>button {
+div.slide button {
   color: white;
   background-color: #f2385a;
   display: flex;
   padding: 5px;
   border-radius: 5px;
+  height: 30px;
 }
 
-section>h1>a {
+div.slide>h1>a {
   color: white
 }
+
+.slide {
+  width: 300px;
+  max-height: 550px;
+  flex-shrink: 0;
+  height: 100%;
+  justify-content: center;
+}
+
+.container {
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+}
+.list_recipes {
+  width: 600%;
+  height: 600px;
+  display: flex;
+  margin: auto;
+  top: 4em;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: .3s all;
+}
+
+justify-content: center;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  -webkit-scroll-snap-points-x: repeat(300px);
+      -ms-scroll-snap-points-x: repeat(300px);
+          scroll-snap-points-x: repeat(300px);
+  -webkit-scroll-snap-type: mandatory;
+      -ms-scroll-snap-type: mandatory;
+          scroll-snap-type: mandatory;
+}
+
+.nextRecipeRight, .nextRecipeLeft {width: 30px;
+height: 30px}
+
+.nextRecipeRight {
+  margin-left: -1.5em;
+  width: 30px}
+.nextRecipeLeft {
+  margin-right: -1.5em;
+  width: 30px}

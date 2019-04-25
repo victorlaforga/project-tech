@@ -1,6 +1,5 @@
 {
-  "builds": [
-    { "src": "*.html", "use": "@now/static" },
-    { "src": "date.js", "use": "@now/node" }
-  ]
+    "version": 2,
+    "name": "diner4two",
+    "builds": [{ "src": "index.js", "use": "@now/static" }]
 }
