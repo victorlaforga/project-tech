@@ -2,9 +2,9 @@
     "version": 2,
     "name": "diner4two",
     "builds": [
+        { "src": "index.html", "use": "@now/static" },
         { "src": "index.js", "use": "@now/node" }
-      ],
-      "routes": [{ "src": "/add", "dest": "index.js" }]
+      ]
     
     
       
