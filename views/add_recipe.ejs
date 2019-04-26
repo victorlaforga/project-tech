@@ -1,0 +1,29 @@
+<% include partials/head.ejs %>
+
+
+<h1>Add your recipe</h1>
+
+<form action="/" method="post">
+  <fieldset>
+    <h2>Add your own recipe to <strong>Dating4Two</strong> !</h2>
+    <label for="namerecipe">Name recipe </label>
+    <input id="title" type="text" name="title" placeholder="Pasta with chicken">
+    <label for="serves">Serves </label>
+    <input id="amount" type="text" name="amount" placeholder="4 people">
+    <label for="duration">Duration </label>
+    <div class="duration_inputs">
+
+
+      <input id="duration" type="number" name="duration">
+      <p>hour(s)</p>
+      <input id="duration" type="number" name="duration">
+      <p>minute(s)</p>
+    </div>
+    <label for="description">Description </label>
+    <textarea id="description" rows="9" cols="62" name="description"></textarea>
+    <input type="submit" value="Add recipe">
+  </fieldset>
+</form>
+
+
+<% include partials/tail.ejs %>

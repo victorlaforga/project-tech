@@ -1,50 +1,21 @@
-# Installing packages & using them
+# Project Tech - Dating4Two 🍳
 
-## Nodemon
+## Dating4Two 💑
+Dating4Two is a datingsite for people who love to cook!🍴You can remove and add recipes to the page.
 
-### Installing nodemon via npm
+## How do I install this repository?
+1. Open your terminal
+2. To install this repository, type in your terminal `git clone https://github.com/victorlaforga/project-tech.git`  
+3. To install the Node modules, type in your terminal `npm install`
+4. To run the application, type in your terminal  `npm run start`
 
-Nodemon helps restarting the node application automatically when file changes in the directory
-In your terminal:
-```
-npm install -g nodemon
-```
-Nodemon wil be globaly installed in the system path
+## Which packages have I used?
+If you want to see which packages I have used, you can look in my package.json file under dependencies and dev dependencies.
 
-### Using nodemon
+<img src="https://user-images.githubusercontent.com/37700441/55120492-a1e7a300-50f6-11e9-814c-6eb7e6b9570e.png" width="30%">
 
-```
-nodemon [your node app]
-```
+## My Wiki 📖
+If you want to see more info about how I worked on my project and which steps I made, go to [My Wiki](https://github.com/victorlaforga/project-tech/wiki)
 
-## Lodash
-
-### Installing lodash via npm
-
-Lodash is used to simplify your work of managing/editing objects and arrays.
-
-```
-$ npm i -g npm
-$ npm i --save lodash
-```
-
-
-### Using lodash
-
-In node.js
-```javascript
-// Load the full build.
-var _ = require('lodash');
-// Load the core build.
-var _ = require('lodash/core');
-// Load the FP build for immutable auto-curried iteratee-first data-last methods.
-var fp = require('lodash/fp');
- 
-// Load method categories.
-var array = require('lodash/array');
-var object = require('lodash/fp/object');
- 
-// Cherry-pick methods for smaller browserify/rollup/webpack bundles.
-var at = require('lodash/at');
-var curryN = require('lodash/fp/curryN');
-```
+## Sources ✔️
+[Sources](https://github.com/victorlaforga/project-tech/wiki/Bronnen)

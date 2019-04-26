@@ -1,0 +1,5 @@
+{
+    "version": 2,
+    "name": "diner4two",
+    "builds": [{ "src": "index.js", "use": "@now/static" }]
+}

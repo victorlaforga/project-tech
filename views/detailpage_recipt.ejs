@@ -1,0 +1,24 @@
+<% include partials/head.ejs %>
+<a class="lastAdded" href="/<%= myrecipe.id %>">My last added recipe: <strong><%= myrecipe.title%></strong> </a>
+<div id="detailpagina">
+
+<h1>
+  <a href="/<%= data._id %>">
+    <%= data.title %></a>
+</h1>
+<p>
+  <%= data.duration %> (hours, minutes)
+</p>
+<p>
+  <%= data.id %>
+</p>
+<p>
+  <%= data.amount %>
+</p>
+<p>
+  <%= data.description %>
+</p>
+<button id="verwijderKnop" data-id="<%= data._id%>" type="button" name="button">Remove recipe</button>
+</div>
+
+<% include partials/tail.ejs %>
