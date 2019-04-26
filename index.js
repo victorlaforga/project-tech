@@ -18,7 +18,7 @@ app.use("/static", express.static("static")).use(
 );
 require("dotenv").config();
 
-let url = "mongodb://localhost:27017/recipes";
+let url = "mongodb://localhost:27017/";
 mongo.MongoClient.connect(
   url,
   {
