@@ -15,6 +15,13 @@ app.use("/static", express.static("static")).use(
   })
 );
 
+const url = 'mongodb://localhost:27017/recipes.recipes';
+
+mongo.MongoClient.connect(url,{useNewUrlParser: true}, function (err, client) {
+  if (err) throw err
+  db = client.db(process.env.DB_NAME)
+})
+
 app
   .use(
     session({
