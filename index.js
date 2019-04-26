@@ -10,18 +10,29 @@ const routes = require('./routes');
 const app = express();
 
 
+
 app.use("/static", express.static("static")).use(
   bodyParser.urlencoded({
     extended: true
   })
 );
 
-const url = 'mongodb://localhost:27017/recipes.recipes';
+require("dotenv").config();
 
-mongo.MongoClient.connect(url,{useNewUrlParser: true}, function (err, client) {
-  if (err) throw err
-  db = client.db(process.env.DB_NAME)
-})
+let url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
+mongo.MongoClient.connect(
+  url,
+  {
+    useNewUrlParser: true
+  },
+  function(err, client) {
+    if (err) {
+      throw err;
+    } else {
+      db = client.db(process.env.DB_NAME);
+    }
+  }
+);
 
 app
   .use(
