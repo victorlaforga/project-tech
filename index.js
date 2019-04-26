@@ -22,7 +22,7 @@ require("dotenv").config();
 
 
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27018/recipes', { useNewUrlParser: true});
+mongoose.connect('mongodb+srv://admin:admin@cluster0-pcrgr.mongodb.net/recipes' || 'mongodb://127.0.0.1:27018/recipes', { useNewUrlParser: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
