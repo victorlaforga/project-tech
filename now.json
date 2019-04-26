@@ -1,5 +1,14 @@
 {
     "version": 2,
     "name": "diner4two",
-    "builds": [{ "src": "index.js", "use": "@now/static" }]
+    "builds": [
+        { "src": "*.html", "use": "@now/static" },
+        { "src": "index.js", "use": "@now/node" }
+      ]
+    
+    
+      
 }
+
+
+
