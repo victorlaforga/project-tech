@@ -18,7 +18,7 @@ app.use("/static", express.static("static")).use(
 );
 require("dotenv").config();
 
-let url = "mongodb://" + "localhost" + ":" + "27017";
+let url = (process.env.MONGODB_URI);
 mongo.MongoClient.connect(
   url,
   {
@@ -28,7 +28,7 @@ mongo.MongoClient.connect(
     if (err) {
       throw err;
     } else {
-      db = client.db("recipes");
+      db = client.db(process.env.DB_NAME);
     }
   }
 );
