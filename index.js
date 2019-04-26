@@ -2,12 +2,13 @@
 const express = require("express");
 const find = require("array-find");
 const slugify = require("slugify");
-const mongo = require("mongodb")
+const mongo = require("mongodb");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 4999;
 const session = require("express-session");
 const routes = require('./routes');
 const app = express();
+const mongoose = require("mongoose");
 
 
 
@@ -18,20 +19,14 @@ app.use("/static", express.static("static")).use(
 );
 require("dotenv").config();
 
-let url = "mongodb://localhost:27017/";
-mongo.MongoClient.connect(
-  url,
-  {
-    useNewUrlParser: true
-  },
-  function(err, client) {
-    if (err) {
-      throw err;
-    } else {
-      db = client.db(process.env.DB_NAME);
-    }
-  }
-);
+const url = 'mongodb://localhost:27017/recipes';
+mongoose.connect(url, { useNewUrlParser: true });
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+	console.log('Connected');
+});
 
 app
   .use(
