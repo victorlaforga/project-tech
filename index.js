@@ -19,7 +19,7 @@ app.use("/static", express.static("static")).use(
 );
 require("dotenv").config();
 
-const url = 'mongodb://127.0.0.1:27017/recipes';
+const url = 'mongodb://127.0.0.1:27018/recipes';
 mongo.MongoClient.connect(url, { useNewUrlParser: true });
 
 const db = mongoose.connection;
