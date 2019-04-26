@@ -8,7 +8,8 @@ const port = process.env.PORT || 4999;
 const session = require("express-session");
 const routes = require('./routes');
 const app = express();
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 
 
@@ -19,8 +20,9 @@ app.use("/static", express.static("static")).use(
 );
 require("dotenv").config();
 
-const url = 'mongodb://127.0.0.1:27018/recipes';
-mongo.MongoClient.connect(url, { useNewUrlParser: true });
+
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27018/recipes', { useNewUrlParser: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
