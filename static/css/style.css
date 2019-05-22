@@ -3,7 +3,50 @@ h1, h2, h3, h4, p, li, label, a, button {
 }
 
 body {
-  background-color: #FF889E;
+	width: 100wh;
+	height: 90vh;
+	color: #fff;
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #c78291, rgb(238, 107, 84));
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
 }
 
 h1 {
@@ -184,12 +227,24 @@ div.slide>h1>a {
   flex-shrink: 0;
   height: 100%;
   justify-content: center;
+  background: #C02C47;
 }
 
 .container {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 625px;
   overflow: hidden;
+  margin: 0 auto;
+  overflow-x: scroll;
+}
+
+.list_recipes:hover .slide:not(:hover) {opacity: 0.4}
+
+
+.container > div > div:hover {background:  #C02C47}
+.slide:hover { transform: scale(1.04);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.25);
+  
 }
 .list_recipes {
   width: 600%;
@@ -224,3 +279,5 @@ height: 30px}
 .nextRecipeLeft {
   margin-right: -1.5em;
   width: 30px}
+
+  

@@ -2,22 +2,7 @@ const find = require("array-find");
 const mongo = require("mongodb");
 const slugify = require("slugify");
 const session = require("express-session");
-require("dotenv").config();
 
-let url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
-mongo.MongoClient.connect(
-  url,
-  {
-    useNewUrlParser: true
-  },
-  function(err, client) {
-    if (err) {
-      throw err;
-    } else {
-      db = client.db(process.env.DB_NAME);
-    }
-  }
-);
 
 exports.index = function(req, res, data) {
   res.render("index.ejs", {
