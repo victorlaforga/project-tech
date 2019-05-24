@@ -8,9 +8,18 @@ const port = process.env.PORT || 4999;
 const session = require("express-session");
 const routes = require('./routes');
 const app = express();
+
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+
+
+var url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT
+
+mongo.MongoClient.connect(url,{ useNewUrlParser: true }, function (err, client) {
+  if (err) throw err
+  db = client.db(process.env.DB_NAME)
+})
 
 
 app.use("/static", express.static("static")).use(

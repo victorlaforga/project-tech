@@ -29,13 +29,13 @@ const list = document.querySelector(".list_recipes");
 pijltjeRechts.forEach(pijl => pijl.addEventListener("click", moveSliderRechts));
 pijltjeLinks.forEach(pijl => pijl.addEventListener("click", moveSliderLinks));
 
-let translate = 0
+let translate = 200
 function moveSliderRechts() {
-  translate = translate - 400
+  translate = translate - 410
   list.style.transform = `translate(${translate}px)`
 }
 
 function moveSliderLinks() {
-  translate = translate + 400
+  translate = translate + 410
   list.style.transform = `translate(${translate}px)`
 }
