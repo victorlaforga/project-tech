@@ -14,12 +14,9 @@ require("dotenv").config();
 
 
 const url = 'mongodb://localhost:27017/recipes';
+mongoose.set("useNewUrlParser", true);
+mongoose.connect(url);
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-	console.log('Connected');
-});
 
 
 app.use("/static", express.static("static")).use(
