@@ -12,20 +12,15 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 
-let url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
-mongo.MongoClient.connect(
-  url,
-  {
-    useNewUrlParser: true
-  },
-  function(err, client) {
-    if (err) {
-      throw err;
-    } else {
-      db = client.db(process.env.DB_NAME);
-    }
-  }
-);
+
+const url = 'mongodb://localhost:27017/recipes';
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+	console.log('Connected');
+});
+
 
 app.use("/static", express.static("static")).use(
   bodyParser.urlencoded({
