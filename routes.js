@@ -2,6 +2,7 @@ const find = require("array-find");
 const mongo = require("mongodb");
 const slugify = require("slugify");
 const session = require("express-session");
+const mongoose = require("mongoose");
 
 
 exports.index = function(req, res, data) {
@@ -45,7 +46,7 @@ exports.addRecipe = function(req, res, next) {
     }
   }
 }
-
+const db = mongoose.connection;
 exports.recipe = function(req, res, next) {
   db.collection("recipes")
     .find()
