@@ -2,9 +2,9 @@
 const express = require("express");
 const find = require("array-find");
 const slugify = require("slugify");
-const mongo = require("mongodb");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 4999;
+const MongoClient = require('mongodb');
 const session = require("express-session");
 const routes = require('./routes');
 const app = express();
@@ -13,9 +13,12 @@ require("dotenv").config();
 
 
 
-const url = 'mongodb+srv://victor:victor123@cluster1998-soojz.mongodb.net/test?retryWrites=true&w=majority';
+const url = "mongodb+srv://victor:victor123@cluster1998-soojz.mongodb.net/test?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
 mongoose.set("useNewUrlParser", true);
-mongoose.connect(url);
+mongoose.connect(uri);
+
+
 
 
 
