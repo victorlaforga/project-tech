@@ -2,7 +2,8 @@ const find = require("array-find");
 const mongo = require("mongodb");
 const slugify = require("slugify");
 const session = require("express-session");
-
+const mongoose = require("mongoose");
+const ObjectID = require("mongoose").Types.ObjectId;
 
 exports.index = function(req, res, data) {
   res.render("index.ejs", {
@@ -45,7 +46,7 @@ exports.addRecipe = function(req, res, next) {
     }
   }
 }
-
+const db = mongoose.connection;
 exports.recipe = function(req, res, next) {
   db.collection("recipes")
     .find()
@@ -65,18 +66,15 @@ exports.recipe = function(req, res, next) {
 
 exports.recipeFind = function(req, res, next) {
   var id = req.params.id;
-
-  //mongo db
-  db.collection("recipes").findOne(
-    {
-      _id: mongo.ObjectID(id)
-    },
-    done
-  );
+  // //mongo db
+  db.collection('recipes').findOne({
+    _id: new ObjectID(id)
+  }, done)
 
   function done(err, data) {
     if (err) {
-      next(err);
+      next(err)
+
     } else {
       res.render("detailpage_recipt.ejs", {
         data,
@@ -89,16 +87,14 @@ exports.recipeFind = function(req, res, next) {
 exports.remove = function(req, res) {
   var id = req.params.id;
 
-  db.collection("recipes").deleteOne(
-    {
-      _id: mongo.ObjectID(id)
-    },
-    done
-  );
+  db.collection('recipes').findOne({
+    _id: new ObjectID(id)
+  }, done)
 
-  function done(err) {
+  function done(err, data) {
     if (err) {
-      next(err);
+      next(err)
+
     } else {
       res.json({
         status: "ok"

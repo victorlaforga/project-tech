@@ -1,13 +1,18 @@
 {
-    "version": 2,
-    "name": "diner4two",
-    "builds": [
-        { "src": "*.html", "use": "@now/static" },
-        { "src": "index.js", "use": "@now/node" }
-      ]
-    
-    
-      
+  "name": "datingfortwo",
+  "version": 2,
+  "builds": [{ "src": "*.js", "use": "@now/node" },
+             { "src": "*.html", "use": "@now/static"}],
+  "env": {
+    "DB_HOST": "27.0.0.1",
+    "DB_PORT": "27017",
+    "SESSION_SECRET": "koken",
+    "DB_NAME": "recipes"
+
+  }
+            
+  
+  
 }
 
 

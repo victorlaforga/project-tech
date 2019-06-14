@@ -8,18 +8,41 @@ const port = process.env.PORT || 4999;
 const session = require("express-session");
 const routes = require('./routes');
 const app = express();
-
 const mongoose = require("mongoose");
 require("dotenv").config();
 
 
 
-var url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT
+const url = 'mongodb+srv://victor:victor123@cluster1998-soojz.mongodb.net/test?retryWrites=true&w=majority';
+mongoose.set("useNewUrlParser", true);
+mongoose.connect(url);
 
-mongo.MongoClient.connect(url,{ useNewUrlParser: true }, function (err, client) {
-  if (err) throw err
-  db = client.db(process.env.DB_NAME)
-})
+
+
+
+
+// mongoose.connect(url, {useNewUrlParser: true}, function (err, client) {
+//   if (err) {
+//     console.log('Sorry, connection failed', err);
+//   } else {
+//     db = client.db(recipe);
+//   }
+// });  
+
+// mongo.MongoClient.connect(url, {useNewUrlParser: true},function (err, client) {
+//  if (err) throw err
+//  db = client.db(process.env.DB_NAME)
+// })
+
+
+
+
+
+// mongo.MongoClient.connect(url, {useNewUrlParser: true},function (err, client) {
+//  if (err) throw err
+//  db = client.db(process.env.DB_NAME)
+// })
+
 
 
 app.use("/static", express.static("static")).use(
