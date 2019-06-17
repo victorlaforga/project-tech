@@ -6,6 +6,7 @@ Dating4Two is a datingsite for people who love to cook!🍴You can remove and ad
 ## How do I install this repository?
 1. Open your terminal
 2. To install this repository, type in your terminal `git clone https://github.com/victorlaforga/project-tech.git`  
+3. Go to the folder with `cd project-tech`
 3. To install the Node modules, type in your terminal `npm install`
 4. To run the application, type in your terminal  `npm run start`
 
