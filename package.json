@@ -19,7 +19,7 @@
         "body-parser": "^1.18.3",
         "dotenv": "^7.0.0",
         "ejs": "^2.6.1",
-        "express": "^4.16.4",
+        "express": "^4.17.3",
         "express-session": "^1.15.6",
         "find": "^0.3.0",
         "heroku": "^7.22.7",
